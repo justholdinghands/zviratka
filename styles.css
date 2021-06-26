@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    display: flex;
+}
+
+main section {
+    display: block;
+    position: relative;
+    min-width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#welcome-content, #greeting-content {
+    max-width: 80vw;
+    text-align: left;
+}
+
+main section .block {
+    display: block;
+    position: relative;
+    object-fit: cover;
+}
+
+main section .block img {
+    height: 100vh;
+    object-fit: cover;
+}

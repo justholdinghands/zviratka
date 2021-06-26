@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/99696cc9f5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <script>
+        function display(form){
+        if (["ester", "ruth", "karin", "agnes", "alice", "dagmar", "libuše", "chloe", "noemi", "zoe", "iris", "ráchel", "vivien"].includes(form.i_userName.value.toLowerCase()))
+            form.o_userName.value = form.i_userName.value;
+        else if (form.i_userName.value.slice(form.i_userName.value.length-2, form.i_userName.value.length) == "ie")
+            form.o_userName.value = form.i_userName.value;
+        else if (["pavel", "karel"].includes(form.i_userName.value.toLowerCase()))
+            form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length-2) + "le";
+        else if (form.i_userName.value.charAt(form.i_userName.value.length-1) == 'a')
+            form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length-1) + "o";
+        else if (['x', 'c', 's', 'z', 'l', 'č', 'š', 'ž', 'ň', 'ť', 'ď', 'j', 'ř'].includes(form.i_userName.value.charAt(form.i_userName.value.length-1)))
+            form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length) + "i";
+        else if (['g', 'k', 'h', 'ch'].includes(form.i_userName.value.charAt(form.i_userName.value.length-1)))
+            form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length) + "u";
+        else form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length) + "e";
+        // window.querySelector('section2').scrollIntoView({behavior: 'smooth'});
+        return false;
+        }
+
+        function scrollToGreet() {
+            var element = document.getElementById("section2");
+            element.scrollIntoView();
+        }
+    </script>
+    <title>Homework 1</title>
+</head>
+<body>
+    <main id="main" data-0="transform:translateX(0%);" data-10000="transform:translateX(-1200%);">
+        <section id="section1">
+            <div id="welcome-content" class="block">
+                <form name="input" action="" method="get" onSubmit="return display(this); scrollToGreet();">
+                    <h2>Zadej jméno:
+                        <input type="text" name="i_userName"></input>
+                    </h2>
+            </div>
+        </section>
+        <section id="section2">
+            <div id="greeting-content" class="block">
+                <h1 id="greeting">Ahoj <output name="o_userName"></output>!</h1>
+                </form>
+                <h2>Jak se máš?</h2>
+                <h3>Tady je několik roztomilých zvířátek pro zahřátí u srdíčka <3 </h3>
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/cat.jpg" alt="cat" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/dog.jpeg" alt="dog" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/capy.jpg" alt="capy" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/gecko.jpg" alt="gecko" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/hippo.jpg" alt="hippo" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/gp.jpg" alt="guineapig" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/bun.jpg" alt="bun" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/coon.jpg" alt="coon" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <img src="pics/otter.jpg" alt="otter" class="frame imgFrame">
+            </div>
+        </section>
+        <section>
+            <div class="block">
+                <video autoplay="true" id="webcam" class="frame imgFrame"></video>
+                <script>
+                    var video = document.querySelector("#webcam");
+                        if (navigator.mediaDevices.getUserMedia) {
+                        navigator.mediaDevices.getUserMedia({ video: true })
+                            .then(function (stream) {
+                            video.srcObject = stream;
+                            })
+                            .catch(function (error) {
+                            console.log("Something went wrong!");
+                            });
+                        }
+                </script>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript" src="skrollr.js"></script>
+    <script type="text/javascript">
+    var s = skrollr.init();
+    </script>
+</body>
+</html>
