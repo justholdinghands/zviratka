@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cz">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/99696cc9f5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <script>
         function display(form){
-        if (["ester", "ruth", "karin", "agnes", "alice", "dagmar", "libuše", "chloe", "noemi", "zoe", "iris", "ráchel", "vivien"].includes(form.i_userName.value.toLowerCase()))
+        if (["ester", "ruth", "karin", "agnes", "alice", "dagmar", "libuše", "penny", "chloe", "noemi", "zoe", "iris", "ráchel", "vivien"].includes(form.i_userName.value.toLowerCase()))
             form.o_userName.value = form.i_userName.value;
         else if (form.i_userName.value.slice(form.i_userName.value.length-2, form.i_userName.value.length) == "ie")
             form.o_userName.value = form.i_userName.value;
+        else if (form.i_userName.value.slice(form.i_userName.value.length-2, form.i_userName.value.length) == "ek")
+        form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length-2) + "ku"
         else if (["pavel", "karel"].includes(form.i_userName.value.toLowerCase()))
             form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length-2) + "le";
         else if (form.i_userName.value.charAt(form.i_userName.value.length-1) == 'a')
@@ -22,82 +24,97 @@
         else if (['g', 'k', 'h', 'ch'].includes(form.i_userName.value.charAt(form.i_userName.value.length-1)))
             form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length) + "u";
         else form.o_userName.value = form.i_userName.value.slice(0, form.i_userName.value.length) + "e";
-        // window.querySelector('section2').scrollIntoView({behavior: 'smooth'});
+        // window.querySelector('section2').scrollIntoView({behavior: 'smooth'})
+        var element = document.getElementById("greeting-content");
+        element.scrollIntoView({behavior: "smooth"});
         return false;
         }
-
-        function scrollToGreet() {
-            var element = document.getElementById("section2");
-            element.scrollIntoView();
-        }
     </script>
+    <!-- <script>
+        function scrollToNext(button) {
+            var contentID = button.parentElement.parentElement.id;
+            var number = contentID.match(/\d+$/)[0];
+            var nextElement = document.getElementById(`content${Number(number)+Number(1)}`);
+            nextElement.scrollIntoView();
+        }
+        </script> -->
     <title>Homework 1</title>
 </head>
 <body>
-    <main id="main" data-0="transform:translateX(0%);" data-10000="transform:translateX(-1200%);">
+    <main id="main";">
         <section id="section1">
-            <div id="welcome-content" class="block">
-                <form name="input" action="" method="get" onSubmit="return display(this); scrollToGreet();">
-                    <h2>Zadej jméno:
-                        <input type="text" name="i_userName"></input>
+            <div id="welcome-content">
+                <form name="input" action="" method="get" onSubmit="return display(this)">
+                    <h2 id="identifyUrself">Zadej jméno:
+                        <input type="text" name="i_userName" spellcheck="false"></input>
                     </h2>
+                    <!-- <button onClick="scrollToGreet()" hidden="true">section2</button> -->
             </div>
         </section>
         <section id="section2">
-            <div id="greeting-content" class="block">
-                <h1 id="greeting">Ahoj <output name="o_userName"></output>!</h1>
-                </form>
-                <h2>Jak se máš?</h2>
-                <h3>Tady je několik roztomilých zvířátek pro zahřátí u srdíčka <3 </h3>
+            <div id="greeting-content">
+                <div id="text">
+                    <h1 id="greeting">Ahoj <output name="o_userName"></output>!</h1>
+                    </form>
+                    <h3>Jak se máš?
+                        <div id="buttons">
+                            <button id="happy">:)</button>
+                            <button id="sad">:(</button>
+                        </div>
+                    </h3>
+                    <h2>Tady je několik(10) roztomilých zvířátek pro zahřátí u srdíčka <3</h2>
+                    <h6>(Pohybuj se šipkami)</h6>
+                </div>
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
-                <img src="pics/cat.jpg" alt="cat" class="frame imgFrame">
-            </div>
-        </section>
-        <section>
-            <div class="block">
+        <section id="section3">
+            <div id="content3" class="block">
                 <img src="pics/dog.jpeg" alt="dog" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section4">
+            <div id="content4" class="block">
                 <img src="pics/capy.jpg" alt="capy" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section5">
+            <div id="content5" class="block">
                 <img src="pics/gecko.jpg" alt="gecko" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section6">
+            <div id="content6" class="block">
                 <img src="pics/hippo.jpg" alt="hippo" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section7">
+            <div id="content7" class="block">
                 <img src="pics/gp.jpg" alt="guineapig" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section8">
+            <div id="content8" class="block">
                 <img src="pics/bun.jpg" alt="bun" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
-                <img src="pics/coon.jpg" alt="coon" class="frame imgFrame">
-            </div>
-        </section>
-        <section>
-            <div class="block">
+        <section id="section9">
+            <div id="content9" class="block">
                 <img src="pics/otter.jpg" alt="otter" class="frame imgFrame">
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
             </div>
         </section>
-        <section>
-            <div class="block">
+        <section id="section10">
+            <div id="compliment">
+                <h1>Awww :3</h1>
+            </div>
+            <div id="content10" class="block">
                 <video autoplay="true" id="webcam" class="frame imgFrame"></video>
                 <script>
                     var video = document.querySelector("#webcam");
@@ -107,16 +124,27 @@
                             video.srcObject = stream;
                             })
                             .catch(function (error) {
-                            console.log("Something went wrong!");
+                            console.log("Webcam is giving attitude :<");
                             });
                         }
                 </script>
             </div>
         </section>
+        <section id="section11">
+            <div id="bye-content">
+                <div id="text">
+                    <h1>To jsou všechny zvířátka na dnes
+                        <div id="buttons">
+                            <button id="happy">:)</button>
+                            <button id="sad">:(</button>
+                        </div>
+                    </h1>
+                    <h2>Měj se krásně!</h2>
+                    <h4>(A piš básně)</h4>
+                </div>
+                <!-- <button onClick="scrollToNext(this)">next</button> -->
+            </div>
+        </section>
     </main>
-    <script type="text/javascript" src="skrollr.js"></script>
-    <script type="text/javascript">
-    var s = skrollr.init();
-    </script>
 </body>
 </html>
